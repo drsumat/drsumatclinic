@@ -1,1 +1,0 @@
-Replace doctor.jpg with your photo and add logo if desired.
