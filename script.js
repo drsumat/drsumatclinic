@@ -1,28 +1,35 @@
-// Smooth reveal animation
+// Smooth page animation
+document.addEventListener("DOMContentLoaded", () => {
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
-}, {
-  threshold: 0.15
-});
+    document.body.style.opacity = "0";
 
-document.querySelectorAll("section").forEach((section) => {
-  section.classList.add("hidden");
-  observer.observe(section);
+    document.body.style.transition = "opacity .6s ease";
+
+    setTimeout(() => {
+        document.body.style.opacity = "1";
+    }, 100);
+
 });
 
 // Button click animation
+document.querySelectorAll(".actions a").forEach(button => {
 
-document.querySelectorAll(".buttons a").forEach((button) => {
-  button.addEventListener("click", () => {
-    button.style.transform = "scale(.96)";
+    button.addEventListener("click", function () {
 
-    setTimeout(() => {
-      button.style.transform = "";
-    }, 150);
-  });
+        this.style.transform = "scale(0.98)";
+
+        setTimeout(() => {
+            this.style.transform = "";
+        }, 150);
+
+    });
+
 });
+
+// Current year in footer (optional)
+const footer = document.querySelector("footer");
+
+if (footer) {
+    footer.innerHTML =
+        `© ${new Date().getFullYear()} Dr. Sumat Homoeopathic Care • Aude Sapere`;
+}
