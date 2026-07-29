@@ -7,16 +7,16 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-green: #0a5c36;
-            --light-green: #2e7d32;
-            --accent-gold: #fbc02d;
-            --bg-color: #eef4f0;
-            --card-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            --text-dark: #2c3e50;
+            --primary-green: #0d522c;
+            --mid-green: #1a7441;
+            --accent-gold: #ffb400;
+            --bg-color: #f2f7f4;
+            --card-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            --text-dark: #1e293b;
         }
 
         * {
@@ -44,20 +44,36 @@
         .card-container {
             background-color: #ffffff;
             width: 100%;
-            max-width: 400px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 410px;
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
             overflow: hidden;
             text-align: center;
-            padding: 24px 14px 0px 14px;
+            padding: 24px 16px 0px 16px;
             margin: 0 auto;
+            position: relative;
+            background-image: 
+                radial-gradient(circle at top left, rgba(13, 82, 44, 0.05), transparent 40%),
+                radial-gradient(circle at top right, rgba(13, 82, 44, 0.05), transparent 40%);
         }
+
+        /* Leaf Corner Decorations */
+        .leaf-decor {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            pointer-events: none;
+            opacity: 0.85;
+            z-index: 1;
+        }
+        .leaf-top-left { top: 0; left: 0; }
+        .leaf-top-right { top: 0; right: 0; transform: scaleX(-1); }
 
         /* Header Logo & Title */
         .logo-circle {
-            width: 75px;
-            height: 75px;
-            margin: 0 auto 10px;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 8px;
             border-radius: 50%;
             background: #ffffff;
             display: flex;
@@ -66,6 +82,9 @@
             border: 2px solid var(--primary-green);
             overflow: hidden;
             padding: 2px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .logo-img {
@@ -78,9 +97,11 @@
         .main-title {
             font-family: 'Playfair Display', serif;
             color: var(--primary-green);
-            font-size: 1.7rem;
+            font-size: 2.1rem;
             font-weight: 700;
-            line-height: 1.1;
+            line-height: 1.05;
+            position: relative;
+            z-index: 2;
         }
 
         .subtitle-divider {
@@ -88,31 +109,45 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            margin: 4px 0 14px;
+            margin: 4px 0 16px;
+            position: relative;
+            z-index: 2;
         }
 
         .subtitle-divider span {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             letter-spacing: 0.5px;
             font-weight: 600;
-            color: #1a3c27;
+            color: #123e24;
         }
 
         .divider-line {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            color: var(--primary-green);
+            font-size: 0.8rem;
+        }
+        .divider-line::before {
+            content: '';
+            display: inline-block;
             height: 1px;
-            width: 30px;
+            width: 25px;
             background-color: var(--primary-green);
         }
 
         /* Profile Image */
         .profile-wrapper {
-            width: 160px;
-            height: 160px;
+            width: 175px;
+            height: 175px;
             margin: 0 auto 12px;
             border-radius: 50%;
             padding: 4px;
             border: 2px solid var(--primary-green);
             background: #fff;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.06);
         }
 
         .profile-img {
@@ -122,50 +157,71 @@
             object-fit: cover;
         }
 
-        /* Tagline */
+        /* Tagline with Leaf Accents */
+        .tagline-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+        
+        .tagline-line {
+            height: 1px;
+            width: 30px;
+            background-color: var(--primary-green);
+            opacity: 0.6;
+        }
+
         .tagline {
             font-family: 'Playfair Display', serif;
             font-style: italic;
             color: var(--primary-green);
-            font-size: 0.92rem;
-            margin-bottom: 18px;
-            padding: 0 5px;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
-        /* Doctor Info Box */
+        /* Doctor Info Tile */
         .info-card {
             background: #ffffff;
-            border-radius: 12px;
-            padding: 10px 12px;
-            box-shadow: var(--card-shadow);
+            border-radius: 16px;
+            padding: 12px 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 18px;
+            gap: 14px;
+            margin-bottom: 20px;
             text-align: left;
-            border: 1px solid #f0f0f0;
+            border: 1px solid #edf4f0;
         }
 
         .info-card .icon-side {
-            width: 40px;
-            height: 40px;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-right: 1px solid #eee;
-            padding-right: 8px;
+            border-right: 1px solid #e2ece6;
+            padding-right: 12px;
             flex-shrink: 0;
+        }
+
+        .asclepius-svg {
+            width: 26px;
+            height: 38px;
+            fill: var(--primary-green);
         }
 
         .info-card h2 {
             font-family: 'Playfair Display', serif;
             color: var(--primary-green);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
 
         .info-card p {
             font-size: 0.78rem;
-            color: #555;
+            color: #475569;
             margin-top: 1px;
         }
 
@@ -175,48 +231,48 @@
             align-items: center;
             justify-content: center;
             gap: 6px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             color: var(--primary-green);
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.05rem;
         }
 
         /* Features Grid */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 4px;
-            margin-bottom: 18px;
+            gap: 2px;
+            margin-bottom: 20px;
             background: #fff;
-            padding: 10px 4px;
-            border-radius: 12px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid #f0f0f0;
+            padding: 12px 4px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #edf4f0;
         }
 
         .feature-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-size: 0.62rem;
-            color: #444;
+            font-size: 0.63rem;
+            color: #334155;
             font-weight: 500;
-            line-height: 1.15;
-            padding: 0 2px;
+            line-height: 1.2;
+            padding: 0 3px;
         }
 
         .feature-item i {
-            font-size: 1.2rem;
+            font-size: 1.35rem;
             color: var(--primary-green);
-            margin-bottom: 5px;
-            height: 22px;
+            margin-bottom: 6px;
+            height: 24px;
             display: flex;
             align-items: center;
         }
 
         .feature-item:not(:last-child) {
-            border-right: 1px solid #eee;
+            border-right: 1px solid #e2ece6;
         }
 
         /* Action Buttons */
@@ -224,7 +280,7 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
 
         .btn-action {
@@ -232,29 +288,29 @@
             align-items: center;
             text-decoration: none;
             color: white;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.06);
-            height: 46px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            height: 48px;
         }
 
         .btn-icon {
-            width: 44px;
-            height: 46px;
+            width: 48px;
+            height: 48px;
             background: rgba(255, 255, 255, 0.95);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             flex-shrink: 0;
         }
 
         .btn-text {
             flex: 1;
             text-align: left;
-            padding-left: 10px;
+            padding-left: 12px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
         }
 
         .btn-text small {
@@ -266,44 +322,45 @@
         }
 
         .btn-arrow {
-            padding-right: 12px;
-            font-size: 0.8rem;
+            padding-right: 14px;
+            font-size: 0.85rem;
         }
 
-        /* Button Colors */
-        .btn-directions { background: #005a36; }
-        .btn-directions .btn-icon { color: #005a36; }
+        /* Button Custom Colors */
+        .btn-directions { background: #0b4f2c; }
+        .btn-directions .btn-icon { color: #0b4f2c; }
 
-        .btn-whatsapp { background: #43a047; }
+        .btn-whatsapp { background: #2e7d32; }
         .btn-whatsapp .btn-icon { color: #25d366; }
 
-        .btn-instagram { background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045); }
+        .btn-instagram { background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045); }
         .btn-instagram .btn-icon { color: #e1306c; }
 
-        .btn-reviews { background: #ffffff; color: #333; border: 1px solid #eee; }
+        .btn-reviews { background: #ffffff; color: #1e293b; border: 1px solid #e2ece6; }
         .btn-reviews .btn-icon { color: #4285f4; }
         .btn-reviews .stars {
             color: var(--accent-gold);
             margin-left: auto;
             margin-right: 6px;
-            font-size: 0.72rem;
+            font-size: 0.75rem;
             display: flex;
             align-items: center;
             gap: 2px;
         }
         .btn-reviews .rating-num {
-            color: #333;
+            color: #1e293b;
             font-weight: 600;
-            margin-left: 2px;
+            margin-left: 3px;
         }
 
         /* Footer */
         footer {
             background-color: var(--primary-green);
             color: white;
-            font-size: 0.7rem;
-            padding: 10px;
-            margin: 0 -14px;
+            font-size: 0.72rem;
+            padding: 12px;
+            margin: 0 -16px;
+            letter-spacing: 0.3px;
         }
 
     </style>
@@ -311,30 +368,52 @@
 <body>
 
     <div class="card-container">
+        <!-- Leaf Corner SVGs -->
+        <svg class="leaf-decor leaf-top-left" viewBox="0 0 100 100" fill="none">
+            <path d="M0 0C30 10 50 35 45 70C35 50 20 30 0 0Z" fill="#1a7441" opacity="0.3"/>
+            <path d="M0 20C20 30 35 50 30 80C20 60 10 40 0 20Z" fill="#0d522c" opacity="0.2"/>
+        </svg>
+        <svg class="leaf-decor leaf-top-right" viewBox="0 0 100 100" fill="none">
+            <path d="M0 0C30 10 50 35 45 70C35 50 20 30 0 0Z" fill="#1a7441" opacity="0.3"/>
+            <path d="M0 20C20 30 35 50 30 80C20 60 10 40 0 20Z" fill="#0d522c" opacity="0.2"/>
+        </svg>
+
         <!-- Logo Header -->
         <div class="logo-circle">
-            <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/75?text=Logo'">
+            <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/80?text=Logo'">
         </div>
 
         <h1 class="main-title">Dr. Sumat</h1>
         <div class="subtitle-divider">
-            <div class="divider-line"></div>
+            <div class="divider-line">➤</div>
             <span>Homoeopathic Care</span>
-            <div class="divider-line"></div>
+            <div class="divider-line" style="transform: scaleX(-1);">➤</div>
         </div>
 
         <!-- Doctor Profile Image -->
         <div class="profile-wrapper">
-            <img src="doctor.png" alt="Dr. Ram Sumat Singh" class="profile-img" onerror="this.src='https://via.placeholder.com/160?text=Doctor+Photo'">
+            <img src="doctor.png" alt="Dr. Ram Sumat Singh" class="profile-img" onerror="this.src='https://via.placeholder.com/175?text=Doctor+Photo'">
         </div>
 
         <!-- Tagline -->
-        <p class="tagline">“Healing the person, not just the disease”</p>
+        <div class="tagline-container">
+            <div class="tagline-line"></div>
+            <p class="tagline">“Healing the person, not just the disease”</p>
+            <div class="tagline-line"></div>
+        </div>
 
-        <!-- Doctor Details Card -->
+        <!-- Doctor Details Card with Exact Rod of Asclepius SVG -->
         <div class="info-card">
             <div class="icon-side">
-                <i class="fa-solid fa-staff-snake" style="font-size: 1.5rem; color: var(--primary-green);"></i>
+                <svg class="asclepius-svg" viewBox="0 0 24 36">
+                    <!-- Staff / Rod -->
+                    <rect x="11" y="2" width="2" height="32" rx="1" />
+                    <circle cx="12" cy="2" r="2" />
+                    <!-- Snake Coiled Around Rod -->
+                    <path d="M7,28 C4,26 4,22 8,20 C14,17 15,14 10,11 C6,8 7,5 12,5 C15,5 17,7 15,9 C13,11 7,12 11,16 C16,21 13,25 9,26 C7,27 8,28 11,28" 
+                          fill="none" stroke="var(--primary-green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="5" r="1.2" />
+                </svg>
             </div>
             <div>
                 <h2>Dr. Ram Sumat Singh</h2>
@@ -345,7 +424,7 @@
 
         <!-- Why Choose Us Section -->
         <div class="section-header">
-            <i class="fa-regular fa-star"></i>
+            <i class="fa-solid fa-star" style="font-size: 0.9rem;"></i>
             <h3>Why Choose Us</h3>
         </div>
 
@@ -355,15 +434,15 @@
                 Personalized Treatment
             </div>
             <div class="feature-item">
-                <i class="fa-solid fa-shield-halved"></i>
-                Gentle & Safe Care
+                <i class="fa-solid fa-shield"></i>
+                Gentle & Safe Homoeopathic Care
             </div>
             <div class="feature-item">
                 <i class="fa-regular fa-clipboard"></i>
                 Individual Case Analysis
             </div>
             <div class="feature-item">
-                <i class="fa-regular fa-hand-holding-heart"></i>
+                <i class="fa-regular fa-heart"></i>
                 Patient-Centered Approach
             </div>
         </div>
@@ -406,7 +485,7 @@
                     <i class="fa-solid fa-star"></i>
                     <span class="rating-num">5.0</span>
                 </div>
-                <i class="fa-solid fa-chevron-right btn-arrow" style="color: #666;"></i>
+                <i class="fa-solid fa-chevron-right btn-arrow" style="color: #64748b;"></i>
             </a>
         </div>
 
